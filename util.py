@@ -92,11 +92,16 @@ def distribute_func(BATCH_SIZE, distribution = 'U'):
     return result
 
 # Generate initial rotation-translation vectors and transform matrices for target and initial parameters
-def init_rtvec(BATCH_SIZE, device, norm_factor, distribution = 'U', manual = False, rtvec_gt_param = None, lateral = False, rtvec_gt_param_lateral = None, iterative = False):
-    if iterative:
-        param_range = [10, 10, 10, 15, 15, 15]
+def init_rtvec(BATCH_SIZE, device, norm_factor, center = [90, 0, 0, 700, 0, 0], distribution = 'N', manual = False, rtvec_gt_param = None, lateral = False, rtvec_gt_param_lateral = None, manual_param_range= None, iterative = False):
+   
+    if manual_param_range == None:
+        if iterative:
+            param_range = [20, 20, 20, 100, 50, 50]
+        # param_range =[10,10,10,15,15,15]
+        else:
+            param_range = [40, 40, 40, 200, 75, 75]
     else:
-        param_range = [20, 10, 10, 30, 30, 30]
+        param_range=manual_param_range
     scale = pose2init_param(param_range, BATCH_SIZE)
     # Uniform Distribution/Normal distribution
     if manual:
@@ -108,14 +113,14 @@ def init_rtvec(BATCH_SIZE, device, norm_factor, distribution = 'U', manual = Fal
             target_param_lateral = target_lateral
             initial_param_lateral = distribute_func(BATCH_SIZE, distribution) * scale + target_param_lateral
     else:
-        target = pose2init_param([90, 0, 0, 700, 0, 0], BATCH_SIZE)
+        target = pose2init_param(center, BATCH_SIZE)
         target_param = distribute_func(BATCH_SIZE, distribution) * scale + target
         if iterative:
             initial_param = distribute_func(BATCH_SIZE, distribution) * scale + target
         else:
             initial_param = distribute_func(BATCH_SIZE, distribution) * scale + target_param
         if lateral:
-            target_lateral = pose2init_param([180, 0, 0, 700, 0, 0], BATCH_SIZE)
+            target_lateral = pose2init_param([center[0] + 90].append([i for i in center[1:]]), BATCH_SIZE)
             target_param_lateral = distribute_func(BATCH_SIZE, distribution) * scale + target_lateral
             if iterative:
                 initial_param_lateral = distribute_func(BATCH_SIZE, distribution) * scale + target_lateral
@@ -134,7 +139,6 @@ def init_rtvec(BATCH_SIZE, device, norm_factor, distribution = 'U', manual = Fal
                 transform_mat3x4_lateral, transform_mat3x4_gt_lateral, rtvec_lateral, rtvec_gt_lateral
     else:
         return transform_mat3x4, transform_mat3x4_gt, rtvec, rtvec_gt
-
 
 
 # Create corner points
