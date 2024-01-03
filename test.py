@@ -49,8 +49,6 @@ def similarity_measure(rtvec,target,CT_vol, ray_proj_mov,corner_pt, param,metric
     elif metric=='msp_ncc':
         operator= MSP_NCC(patch_sizes=[None,13],patch_weights=[0.5,0.5])
         return 1-operator(target,moving)
-    elif metric=='mpw_ncc':
-        return MPW_NCC(target,moving,patch_sizes=[7])
     elif metric=='msp_gc':
         operator=1 - MSP_GC(patch_sizes=[None,13],patch_weights=[0.5,0.5])
         return operator(target,moving)
