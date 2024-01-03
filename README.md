@@ -1,5 +1,8 @@
+## News
+* **2024/1/3** Provides more similarity measures including multi-scale normalized cross-correlation, etc. ( Reference: [DiffPose](https://github.com/eigenvivek/DiffPose) )
 # CMAES-reg
 Using [Covariance Matrix Adaptation Evolution Strategy (CMA-ES)](https://github.com/CyberAgentAILab/cmaes) for 2D/3D registration.The procedure is  single-resolution and the DRR module is implmented by [projective spatial transformers](https://github.com/gaocong13/Projective-Spatial-Transformers).
+
  - The result is evaluated on simulation data. To evaluate the registration, we follow the standardized evaluation methodology to report the Mean Target Registration Error(mTRE) as follows:
 <table>
     <tr>
