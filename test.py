@@ -27,7 +27,7 @@ device_ids = [0]
 device = torch.device('cuda:{}'.format(device_ids[0]))
 zFlip = False
 proj_size = 256
-flag = 4
+flag = 2
 generation_num=500
 drr_generator = ProST_opt().to(device)
 
@@ -107,13 +107,11 @@ def CMA_ES(metric='msp_ncc',sigma=0.05,lr_adapt=False ):
                       device=device),0)
             value = similarity_measure(x,target,CT_vol, ray_proj_mov,corner_pt, param,metric)
             append((x.cpu().detach().numpy().squeeze(), value.cpu().detach().numpy().squeeze()))
-            if(min_value>value):
-                result=x
-                min_value=value
-                min_generation=generation
+        
         
         optimizer.tell(solutions)
-        
+        result=torch.unsqueeze(torch.tensor(optimizer._mean, dtype=torch.float, requires_grad=False,
+                      device=device),0)
         if min_generation+50<generation:
             print('early stop at generation:', generation)
             break
