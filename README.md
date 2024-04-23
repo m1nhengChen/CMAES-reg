@@ -15,17 +15,17 @@ Using [Covariance Matrix Adaptation Evolution Strategy (CMA-ES)](https://github.
     </tr>
   <tr>
      <td>Initial</td>
-     <td>205.81±89.39</td>
-     <td>172.05±66.78</td> 
-     <td>135.12±48.70</td> 
+     <td>205.81</td>
+     <td>172.05</td> 
+     <td>135.12</td> 
      <td>0.0</td>
      <td>N/A</td>
     </tr>
     <tr>
      <td>CMA-ES</td>
-     <td>31.72±62.13</td>
-     <td>8.37±4.95</td> 
-     <td>5.39±2.40</td> 
+     <td>31.72</td>
+     <td>8.37</td> 
+     <td>5.39</td> 
      <td>49.4</td>
      <td>21.2s</td> 
     </tr>
