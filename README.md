@@ -1,4 +1,5 @@
 ## News
+* **2024/5/17** Provides a fully differentiable optimization-based approach implemented by PyTorch’s stochastic gradient descent optimizer, which is used as a baseline in our experiments. ( Reference: [Link](https://thejns.org/focus/view/journals/neurosurg-focus/54/6/article-pE16.xml) )
 * **2024/1/3** Provides more similarity measures including multi-scale normalized cross-correlation, etc. ( Reference: [DiffPose](https://github.com/eigenvivek/DiffPose) )
 # CMAES-reg
 Using [Covariance Matrix Adaptation Evolution Strategy (CMA-ES)](https://github.com/CyberAgentAILab/cmaes) for 2D/3D registration.The procedure is  single-resolution and the DRR module is implmented by [projective spatial transformers](https://github.com/gaocong13/Projective-Spatial-Transformers).
