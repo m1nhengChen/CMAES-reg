@@ -1,5 +1,6 @@
 import cv2
 import math
+import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pandas as pd
@@ -7,8 +8,12 @@ import random
 import SimpleITK as sitk
 import torch
 import torch.nn as nn
-
-
+import torch.nn.functional as F
+import torchvision
+from torch import optim
+from metric import cal_ncc
+PI = math.pi
+cal_mse = nn.MSELoss()
 
 # Convert numpy to tensor
 def tensor_exp2torch(T, BATCH_SIZE, device):
@@ -244,4 +249,20 @@ def eval(test_func, test_epoch_num, DF_PATH,include_ini=False):
     Returns:
         None
     '''
-    
+class SGDWithBounds(optim.SGD):
+    def __init__(self, params, bounds, lr=0.01, momentum=0.6, dampening=0.45, weight_decay=1e-8, nesterov=False):
+        super(SGDWithBounds, self).__init__(params, lr=lr, momentum=momentum, dampening=dampening, weight_decay=weight_decay, nesterov=nesterov)
+        self.bounds = bounds
+
+    def step(self):
+        for group in self.param_groups:
+            for p in group['params']:
+                if p.grad is None:
+                    continue
+                grad = p.grad.data
+                param = p.data
+
+                # Adding Boundary Constraints
+                param.add_(grad, alpha=-group['lr'])
+                param.clamp_(self.bounds[0], self.bounds[1])
+                p.data = param
