@@ -31,8 +31,7 @@ Using [Covariance Matrix Adaptation Evolution Strategy (CMA-ES)](https://github.
     </tr>
 </table>
 
-- The mTRE results are reported in forms of the 50th, 75th, and 95th percentiles to demonstrate the robustness of our methods. In addition, we also report the success rate (SR) and average registration time, where SR
-is defined as the percentage of the tested cases with a TRE smaller than 10 mm.
+- The mTRE results are reported in forms of the 50th, 75th, and 95th percentiles to demonstrate the robustness of our methods. In addition, we also report the success rate (SR) and average registration time, where SR is defined as the percentage of the tested cases with a TRE smaller than 10 mm.
 
 Although this framework is single-resolution, it can be easily changed to multi-resolution. Feel free to replace its similarity measure and tune the hyperparameters.
 
