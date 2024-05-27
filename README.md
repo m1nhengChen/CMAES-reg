@@ -45,3 +45,11 @@ If you find this work useful in your research, please cite the appropriate paper
   year={2024}
 }
 ```
+```
+@article{zhang2024introducing,
+  title={Introducing Learning Rate Adaptation CMA-ES into Rigid 2D/3D Registration for Robotic Navigation in Spine Surgery},
+  author={Zhang, Zhirun and Chen, Minheng},
+  journal={arXiv preprint arXiv:2405.10186},
+  year={2024}
+}
+```
