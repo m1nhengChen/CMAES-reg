@@ -46,10 +46,12 @@ If you find this work useful in your research, please cite the appropriate paper
 }
 ```
 ```
-@article{zhang2024introducing,
-  title={Introducing Learning Rate Adaptation CMA-ES into Rigid 2D/3D Registration for Robotic Navigation in Spine Surgery},
-  author={Zhang, Zhirun and Chen, Minheng},
-  journal={arXiv preprint arXiv:2405.10186},
-  year={2024}
+@inproceedings{chen2025introducing,
+  title={Introducing Learning Rate Adaptation CMA-ES into Rigid Intraoperative 2D/3D Registration for Spinal Surgery},
+  author={Chen, Minheng and Zhang, Zhirun},
+  booktitle={2025 IEEE 22nd International Symposium on Biomedical Imaging (ISBI)},
+  pages={1--4},
+  year={2025},
+  organization={IEEE}
 }
 ```
